@@ -2,36 +2,41 @@
 
 ## 🎯 **Ví dụ về độ tin cậy 31% (0.31)**
 
-| **Độ tin cậy** | **Ý nghĩa** | **Mức độ** | **Khuyến nghị** |
-|----------------|-------------|------------|-----------------|
-| **31%** | Mô hình chỉ 31% tự tin | 🔴 Thấp | ⚠️ Cần kiểm tra kỹ |
-| **50%** | Mô hình 50% tự tin | 🟠 Trung bình | ✅ Có thể chấp nhận |
-| **70%** | Mô hình 70% tự tin | 🟡 Cao | ✅ Tin cậy tốt |
-| **90%** | Mô hình 90% tự tin | 🟢 Rất cao | ✅ Tin cậy tuyệt đối |
+| **Độ tin cậy** | **Ý nghĩa**            | **Mức độ**    | **Khuyến nghị**      |
+| -------------- | ---------------------- | ------------- | -------------------- |
+| **31%**        | Mô hình chỉ 31% tự tin | 🔴 Thấp       | ⚠️ Cần kiểm tra kỹ   |
+| **50%**        | Mô hình 50% tự tin     | 🟠 Trung bình | ✅ Có thể chấp nhận  |
+| **70%**        | Mô hình 70% tự tin     | 🟡 Cao        | ✅ Tin cậy tốt       |
+| **90%**        | Mô hình 90% tự tin     | 🟢 Rất cao    | ✅ Tin cậy tuyệt đối |
 
 ## 📈 **Thang đo chi tiết:**
 
 ### 🟢 **80-100%**: Rất cao
+
 - **Ý nghĩa**: Mô hình rất tự tin
 - **Khuyến nghị**: Tin tưởng hoàn toàn
 - **Ví dụ**: Người, xe hơi rõ ràng
 
-### 🟡 **60-80%**: Cao  
+### 🟡 **60-80%**: Cao
+
 - **Ý nghĩa**: Mô hình tự tin
 - **Khuyến nghị**: Tin tưởng tốt
 - **Ví dụ**: Đối tượng hơi mờ nhưng vẫn nhận ra
 
 ### 🟠 **40-60%**: Trung bình
+
 - **Ý nghĩa**: Mô hình không chắc chắn
 - **Khuyến nghị**: Cần xem xét kỹ
 - **Ví dụ**: Đối tượng bị che khuất một phần
 
 ### 🔴 **20-40%**: Thấp
+
 - **Ý nghĩa**: Mô hình không tự tin
 - **Khuyến nghị**: Có thể sai
 - **Ví dụ**: Đối tượng nhỏ, mờ, góc chụp xấu
 
 ### ⚫ **0-20%**: Rất thấp
+
 - **Ý nghĩa**: Mô hình rất không chắc chắn
 - **Khuyến nghị**: Có thể bỏ qua
 - **Ví dụ**: Nhiễu, false positive

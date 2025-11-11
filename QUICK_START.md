@@ -11,6 +11,7 @@ cd "C:\Users\Thinh Nguyen\Downloads\yolov5-master\yolov5-master"
 ```
 
 Script sẽ tự động:
+
 - ✅ Kiểm tra image đã có chưa
 - ✅ Build image nếu chưa có
 - ✅ Chạy training
@@ -20,11 +21,13 @@ Script sẽ tự động:
 ## 📋 Cách thủ công (Từng bước)
 
 ### Bước 1: Vào thư mục dự án
+
 ```powershell
 cd "C:\Users\Thinh Nguyen\Downloads\yolov5-master\yolov5-master"
 ```
 
 ### Bước 2: Build image (CHẠY LỆNH NÀY TRƯỚC)
+
 ```powershell
 docker build -t thinh/traffic-cpu .
 ```
@@ -32,6 +35,7 @@ docker build -t thinh/traffic-cpu .
 **⏱️ Mất khoảng 5-10 phút lần đầu tiên**
 
 ### Bước 3: Chạy training
+
 ```powershell
 docker run --rm -it -v "${PWD}/datasets:/app/datasets" -v "${PWD}/runs:/app/runs" -v "${PWD}/data:/app/data" thinh/traffic-cpu python train_traffic_signs.py --data data/traffic_signs_vietnam.yaml --epochs 100
 ```
@@ -50,6 +54,7 @@ docker compose up --build
 
 **Lỗi: "Unable to find image 'thinh/traffic-cpu:latest' locally"**
 → **Giải pháp:** Chạy lệnh build trước:
+
 ```powershell
 docker build -t thinh/traffic-cpu .
 ```
@@ -69,4 +74,3 @@ docker images | findstr thinh
 ```
 
 Nếu thấy `thinh/traffic-cpu` trong danh sách → OK, có thể chạy training.
-

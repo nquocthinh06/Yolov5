@@ -3,7 +3,7 @@
 ## ✅ Git đã được cài đặt và cấu hình!
 
 - **Git version:** 2.51.2.windows.1
-- **User name:** Thinh Nguyen  
+- **User name:** Thinh Nguyen
 - **User email:** nquocthinh06@gmail.com
 
 ## Các bước tiếp theo:
@@ -27,6 +27,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 ```
 
 Khi script hỏi URL repository, nhập URL bạn vừa tạo, ví dụ:
+
 ```
 https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 ```
@@ -34,12 +35,14 @@ https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 ### Bước 3: Xác thực GitHub (nếu cần)
 
 **Nếu dùng HTTPS:**
+
 - GitHub sẽ yêu cầu username và **Personal Access Token (PAT)**
 - Tạo PAT tại: https://github.com/settings/tokens
 - Chọn quyền `repo` (full control)
 - Dùng token thay cho password
 
 **Nếu dùng SSH (khuyến nghị):**
+
 ```powershell
 # Tạo SSH key
 ssh-keygen -t ed25519 -C "nquocthinh06@gmail.com"
@@ -78,9 +81,9 @@ git push -u origin main
 ## ⚠️ Lưu ý:
 
 1. **File .gitignore** đã được cấu hình để loại trừ:
-   - File weights (*.pt)
+   - File weights (\*.pt)
    - Ảnh và video lớn
-   - Thư mục __pycache__
+   - Thư mục **pycache**
 
 2. **Nếu gặp lỗi PATH:**
    - Đóng và mở lại PowerShell
@@ -96,4 +99,3 @@ git push -u origin main
 - `HUONG_DAN_PUSH_GITHUB.md` - Hướng dẫn chi tiết đầy đủ
 - `push-to-github.ps1` - Script tự động push code
 - `setup-git.ps1` - Script kiểm tra cấu hình Git
-

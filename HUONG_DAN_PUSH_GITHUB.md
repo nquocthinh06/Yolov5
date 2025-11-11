@@ -3,21 +3,25 @@
 ## Bước 1: Cài đặt Git (nếu chưa có)
 
 ### Cách 1: Tải Git từ trang chính thức
+
 1. Truy cập: https://git-scm.com/download/win
 2. Tải và cài đặt Git cho Windows
 3. Trong quá trình cài đặt, chọn các tùy chọn mặc định
 
 ### Cách 2: Cài đặt qua Chocolatey (nếu đã có Chocolatey)
+
 ```powershell
 choco install git
 ```
 
 ### Cách 3: Cài đặt qua winget (Windows 10/11)
+
 ```powershell
 winget install --id Git.Git -e --source winget
 ```
 
 Sau khi cài đặt, mở lại PowerShell và kiểm tra:
+
 ```powershell
 git --version
 ```
@@ -25,6 +29,7 @@ git --version
 ## Bước 2: Cấu hình Git (chỉ cần làm 1 lần)
 
 Mở PowerShell và chạy các lệnh sau:
+
 ```powershell
 git config --global user.name "Tên của bạn"
 git config --global user.email "email@example.com"
@@ -44,11 +49,13 @@ git config --global user.email "email@example.com"
 ### Cách 1: Sử dụng script tự động (Khuyến nghị)
 
 Chạy script PowerShell:
+
 ```powershell
 .\push-to-github.ps1
 ```
 
 Script sẽ tự động:
+
 - Kiểm tra Git đã được cài đặt chưa
 - Khởi tạo git repository
 - Thêm tất cả files
@@ -80,7 +87,8 @@ git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 git push -u origin main
 ```
 
-**Lưu ý:** 
+**Lưu ý:**
+
 - Thay `YOUR_USERNAME` bằng tên GitHub của bạn
 - Thay `YOUR_REPO_NAME` bằng tên repository bạn vừa tạo
 - Nếu sử dụng SSH thay vì HTTPS, dùng: `git@github.com:YOUR_USERNAME/YOUR_REPO_NAME.git`
@@ -90,6 +98,7 @@ git push -u origin main
 Khi push lần đầu, GitHub sẽ yêu cầu xác thực:
 
 ### Nếu dùng HTTPS:
+
 - GitHub sẽ yêu cầu username và password
 - **Lưu ý:** Từ năm 2021, GitHub không còn chấp nhận password thông thường
 - Bạn cần tạo **Personal Access Token (PAT)**:
@@ -99,14 +108,19 @@ Khi push lần đầu, GitHub sẽ yêu cầu xác thực:
   4. Copy token và dùng nó thay cho password khi push
 
 ### Nếu dùng SSH (Khuyến nghị):
+
 1. Tạo SSH key:
+
 ```powershell
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
+
 2. Copy public key:
+
 ```powershell
 cat ~/.ssh/id_ed25519.pub
 ```
+
 3. Thêm vào GitHub: Settings → SSH and GPG keys → New SSH key
 4. Dùng SSH URL khi add remote: `git@github.com:USERNAME/REPO.git`
 
@@ -138,17 +152,22 @@ git remote -v
 ## Xử lý lỗi thường gặp
 
 ### Lỗi: "fatal: not a git repository"
+
 **Giải pháp:** Chạy `git init` trong thư mục dự án
 
 ### Lỗi: "remote origin already exists"
+
 **Giải pháp:** Xóa remote cũ và thêm lại:
+
 ```powershell
 git remote remove origin
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 ```
 
 ### Lỗi: "failed to push some refs"
+
 **Giải pháp:** Pull code từ GitHub trước rồi push lại:
+
 ```powershell
 git pull origin main --allow-unrelated-histories
 git push -u origin main
@@ -157,9 +176,9 @@ git push -u origin main
 ## Lưu ý quan trọng
 
 1. **File .gitignore** đã được cấu hình để loại trừ:
-   - File weights (*.pt)
-   - Ảnh và video (*.jpg, *.mp4)
-   - Thư mục __pycache__
+   - File weights (\*.pt)
+   - Ảnh và video (_.jpg, _.mp4)
+   - Thư mục **pycache**
    - File dữ liệu lớn
 
 2. **Kiểm tra trước khi push:**
@@ -170,4 +189,3 @@ git push -u origin main
    - Code sẽ có sẵn trên GitHub
    - Bạn có thể chia sẻ link repository
    - Có thể clone về máy khác: `git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git`
-
