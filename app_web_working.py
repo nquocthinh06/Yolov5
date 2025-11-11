@@ -7,9 +7,10 @@ import os
 import shutil
 from pathlib import Path
 import pandas as pd
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import time
 from datetime import datetime
+import random
 
 # ============== PAGE CONFIG ==============
 st.set_page_config(
@@ -30,6 +31,60 @@ def create_directories():
         Path(d).mkdir(parents=True, exist_ok=True)
 
 create_directories()
+
+# ============== DETECTION HELPER FUNCTIONS ==============
+def draw_detections(image, detections):
+    """Draw detection boxes with labels and confidence scores"""
+    img = image.copy()
+    draw = ImageDraw.Draw(img)
+    
+    # List of class names and colors
+    classes = ["person", "motorcycle", "car", "bus", "truck", "bicycle", "helmet"]
+    colors = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF", "#FF8800"]
+    
+    for i, det in enumerate(detections):
+        x1, y1, x2, y2 = det["box"]
+        confidence = det["confidence"]
+        class_name = det["class"]
+        
+        # Get color for this class
+        color_idx = hash(class_name) % len(colors)
+        color = colors[color_idx]
+        
+        # Draw rectangle with thicker border
+        draw.rectangle([(x1, y1), (x2, y2)], outline=color, width=3)
+        
+        # Draw label background
+        label_text = f"{class_name} {confidence:.2f}"
+        try:
+            # Try to use default font, if not available use default
+            font = ImageFont.load_default()
+            bbox = draw.textbbox((x1, y1), label_text, font=font)
+        except:
+            bbox = (x1, y1, x1 + 100, y1 + 20)
+        
+        # Draw label background rectangle
+        draw.rectangle([(bbox[0]-2, bbox[1]-5), (bbox[2]+2, bbox[3]+5)], fill=color)
+        
+        # Draw label text
+        draw.text((x1, y1-15), label_text, fill="white", font=font)
+    
+    return img
+
+def generate_mock_detections(image):
+    """Generate mock detections from image"""
+    width, height = image.size
+    
+    detections = [
+        {"box": (50, 50, 200, 150), "confidence": 0.95, "class": "person"},
+        {"box": (250, 100, 350, 250), "confidence": 0.88, "class": "motorcycle"},
+        {"box": (100, 200, 280, 350), "confidence": 0.92, "class": "motorcycle"},
+        {"box": (320, 180, 400, 300), "confidence": 0.87, "class": "person"},
+        {"box": (40, 150, 120, 220), "confidence": 0.89, "class": "motorcycle"},
+        {"box": (200, 250, 300, 350), "confidence": 0.91, "class": "car"},
+    ]
+    
+    return detections
 
 # ============== CSS STYLING ==============
 st.markdown("""
@@ -104,23 +159,27 @@ if st.session_state.tab == "🎯 Detect":
                         original_path = f"results/predictions/{timestamp}_original.jpg"
                         image.save(original_path)
                         
-                        # Create detection result (add borders as example)
-                        img_array = image.copy()
-                        draw = ImageDraw.Draw(img_array)
-                        draw.rectangle([(50, 50), (200, 150)], outline="red", width=3)
-                        draw.rectangle([(250, 100), (350, 250)], outline="green", width=3)
+                        # Generate mock detections
+                        detections = generate_mock_detections(image)
+                        
+                        # Filter by confidence threshold
+                        filtered_detections = [d for d in detections if d["confidence"] >= confidence]
+                        
+                        # Draw detections on image
+                        detected_image = draw_detections(image, filtered_detections)
                         
                         # Save result
                         result_path = f"results/predictions/{timestamp}_detected.jpg"
-                        img_array.save(result_path)
+                        detected_image.save(result_path)
                         
                         # Store detection result in session
                         st.session_state.detection_result = {
-                            "detections": 6,
+                            "detections": len(filtered_detections),
                             "confidence": confidence,
                             "time": "145ms",
                             "image_path": result_path,
-                            "timestamp": timestamp
+                            "timestamp": timestamp,
+                            "details": filtered_detections
                         }
                         
                         time.sleep(1)
