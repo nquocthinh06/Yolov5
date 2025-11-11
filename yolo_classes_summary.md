@@ -1,16 +1,19 @@
 # 📋 YOLOv5 - Danh sách đối tượng có thể nhận diện
 
 ## 🎯 **Tổng quan**
+
 YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được chia thành 8 nhóm chính:
 
 ---
 
 ## 👤 **1. Con người (1 loại)**
+
 - **person** - Người
 
 ---
 
 ## 🚗 **2. Phương tiện giao thông (8 loại)**
+
 - **bicycle** - Xe đạp
 - **car** - Ô tô
 - **motorcycle** - Xe máy
@@ -23,6 +26,7 @@ YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được
 ---
 
 ## 🐕 **3. Động vật (10 loại)**
+
 - **bird** - Chim
 - **cat** - Mèo
 - **dog** - Chó
@@ -37,6 +41,7 @@ YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được
 ---
 
 ## 🍎 **4. Thực phẩm (10 loại)**
+
 - **banana** - Chuối
 - **apple** - Táo
 - **sandwich** - Bánh sandwich
@@ -51,6 +56,7 @@ YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được
 ---
 
 ## 🏠 **5. Đồ dùng gia đình (24 loại)**
+
 - **chair** - Ghế
 - **couch** - Ghế sofa
 - **bed** - Giường
@@ -78,6 +84,7 @@ YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được
 ---
 
 ## ⚽ **6. Thể thao & Giải trí (14 loại)**
+
 - **sports ball** - Bóng thể thao
 - **kite** - Diều
 - **skateboard** - Ván trượt
@@ -94,6 +101,7 @@ YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được
 ---
 
 ## 👔 **7. Quần áo & Phụ kiện (4 loại)**
+
 - **backpack** - Ba lô
 - **handbag** - Túi xách
 - **tie** - Cà vạt
@@ -102,6 +110,7 @@ YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được
 ---
 
 ## 🌿 **8. Khác (9 loại)**
+
 - **traffic light** - Đèn giao thông
 - **fire hydrant** - Trụ nước cứu hỏa
 - **stop sign** - Biển báo dừng
@@ -120,16 +129,19 @@ YOLOv5 có thể nhận diện **80 loại đối tượng** khác nhau được
 ## 💡 **Lời khuyên sử dụng:**
 
 ### **🎯 Phù hợp nhất:**
+
 - **Phát hiện người và phương tiện** (giao thông)
 - **Đồ dùng gia đình** (nội thất, thiết bị)
 - **Thực phẩm** (món ăn, hoa quả)
 
 ### **⚠️ Cần cẩn thận:**
+
 - **Động vật** (có thể nhầm lẫn)
 - **Đồ thể thao** (hình dáng tương tự)
 - **Phụ kiện nhỏ** (độ tin cậy thấp)
 
 ### **🔧 Cách tối ưu:**
+
 - **Độ tin cậy 50-70%** cho kết quả cân bằng
 - **Kiểm tra kết quả** với độ tin cậy dưới 50%
 - **Sử dụng ảnh rõ nét** để tăng độ chính xác

@@ -34,7 +34,8 @@ docker run --rm -it `
     --epochs 100
 ```
 
-**Lưu ý:** 
+**Lưu ý:**
+
 - Dùng backtick `` ` `` (phím bên trái số 1) để xuống dòng trong PowerShell
 - Kết quả sẽ lưu trong thư mục `runs/` trên máy bạn
 
@@ -101,13 +102,15 @@ docker rmi thinh/traffic-cpu
 ## ⚠️ Xử lý lỗi thường gặp
 
 **Lỗi "invalid reference format":**
+
 - Đảm bảo dùng backtick `` ` `` thay vì `^` trong PowerShell
 - Hoặc viết lệnh trên 1 dòng
 
 **Lỗi "path not found":**
+
 - Đảm bảo đang ở đúng thư mục dự án
 - Kiểm tra đường dẫn có khoảng trắng phải bọc trong dấu ngoặc kép `"${PWD}/..."`
 
 **Lỗi "permission denied":**
-- Chạy PowerShell với quyền Administrator (nếu cần)
 
+- Chạy PowerShell với quyền Administrator (nếu cần)

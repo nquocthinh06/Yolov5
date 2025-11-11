@@ -2,31 +2,31 @@
 # Ultralytics 🚀 AGPL-3.0 License
 
 # Dataset paths
-path: ../datasets/traffic_signs_vietnam  # dataset root dir
-train: images/train  # train images (relative to 'path')
-val: images/val      # val images (relative to 'path')
-test: images/test    # test images (relative to 'path')
+path: ../datasets/traffic_signs_vietnam # dataset root dir
+train: images/train # train images (relative to 'path')
+val: images/val # val images (relative to 'path')
+test: images/test # test images (relative to 'path')
 
 # Number of classes
-nc: 15  # number of classes
+nc: 15 # number of classes
 
 # Class names for Vietnamese traffic signs
 names:
-  0: 'cam_di_nguoc_chieu'      # Cấm đi ngược chiều
-  1: 'cam_dung_do'             # Cấm dừng đỗ
-  2: 'cam_re_trai'             # Cấm rẽ trái
-  3: 'cam_re_phai'             # Cấm rẽ phải
-  4: 'cam_vuot'                # Cấm vượt
-  5: 'gioi_han_toc_do'         # Giới hạn tốc độ
-  6: 'bien_bao_nguy_hiem'      # Biển báo nguy hiểm
-  7: 'bien_bao_chi_dan'        # Biển báo chỉ dẫn
-  8: 'den_giao_thong'          # Đèn giao thông
-  9: 'bien_bao_phu'            # Biển báo phụ
-  10: 'cam_quay_dau'           # Cấm quay đầu
-  11: 'cam_vao'                # Cấm vào
-  12: 'duong_cam'              # Đường cấm
-  13: 'bien_bao_ket_thuc'      # Biển báo kết thúc
-  14: 'bien_bao_tam_thoi'      # Biển báo tạm thời
+  0: "cam_di_nguoc_chieu" # Cấm đi ngược chiều
+  1: "cam_dung_do" # Cấm dừng đỗ
+  2: "cam_re_trai" # Cấm rẽ trái
+  3: "cam_re_phai" # Cấm rẽ phải
+  4: "cam_vuot" # Cấm vượt
+  5: "gioi_han_toc_do" # Giới hạn tốc độ
+  6: "bien_bao_nguy_hiem" # Biển báo nguy hiểm
+  7: "bien_bao_chi_dan" # Biển báo chỉ dẫn
+  8: "den_giao_thong" # Đèn giao thông
+  9: "bien_bao_phu" # Biển báo phụ
+  10: "cam_quay_dau" # Cấm quay đầu
+  11: "cam_vao" # Cấm vào
+  12: "duong_cam" # Đường cấm
+  13: "bien_bao_ket_thuc" # Biển báo kết thúc
+  14: "bien_bao_tam_thoi" # Biển báo tạm thời
 
 # Download script (optional)
 download: |
@@ -42,4 +42,3 @@ download: |
   #     ├── train/
   #     ├── val/
   #     └── test/
-
