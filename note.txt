@@ -1,0 +1,3 @@
+- đặt tên lại tên chủ đề: vd: "Ứng dụng YOLOv5 trong phát hiện phương tiện và đo mật độ giao thông"
+- parameters: thông số
+- mAP (mean Average Precision) là chỉ số đánh giá độ chính xác của model object detection.

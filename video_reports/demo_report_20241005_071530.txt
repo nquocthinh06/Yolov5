@@ -1,0 +1,51 @@
+🎬 BÁO CÁO PHÂN TÍCH VIDEO - YOLOv5
+============================================================
+
+📅 Thời gian tạo báo cáo: 05/10/2024 07:15:30
+⚙️ Model sử dụng: yolov5x.pt
+🎯 Độ tin cậy: 60%
+📊 IoU threshold: 45%
+
+📊 THỐNG KÊ TỔNG HỢP:
+----------------------------------------
+• Tổng số frame xử lý: 300
+• Tổng số đối tượng phát hiện: 1250
+• Trung bình mỗi frame: 4.2 đối tượng
+
+👥 Con người:
+• Tổng số người phát hiện: 85
+• Trung bình mỗi frame: 0.3 người
+
+🚗 Phương tiện:
+• Tổng số phương tiện: 1165
+• Trung bình mỗi frame: 3.9 phương tiện
+
+🎯 Phân tích:
+• Mật độ giao thông: Cao - Giao thông đông đúc
+• Mật độ người: Trung bình
+
+⚠️ Khuyến nghị:
+• Giao thông đông đúc - Cần điều tiết
+• Khu vực hoạt động cao - Tăng cường giám sát
+
+🎞️ KẾT QUẢ CHI TIẾT TỪNG FRAME:
+----------------------------------------
+
+Frame 30: 5 đối tượng (1 người, 4 phương tiện)
+   Chi tiết: person: 85.3%, car: 92.1%, car: 78.4%, truck: 68.8%, car: 89.2%
+
+Frame 60: 6 đối tượng (2 người, 4 phương tiện)
+   Chi tiết: person: 91.2%, person: 76.5%, car: 84.6%, car: 95.3%, bus: 72.1%, car: 88.7%
+
+Frame 90: 3 đối tượng (0 người, 3 phương tiện)
+   Chi tiết: car: 89.4%, truck: 91.9%, car: 83.4%
+
+Frame 120: 7 đối tượng (3 người, 4 phương tiện)
+   Chi tiết: person: 88.1%, person: 92.7%, person: 79.3%, car: 86.2%, car: 94.5%, motorcycle: 75.8%, car: 91.1%
+
+📝 Ghi chú: Đây là file demo để minh họa format báo cáo
+📁 Vị trí lưu: video_reports/demo_report_20241005_071530.txt
+
+============================================================
+Được tạo bởi YOLOv5 Traffic Detection GUI
+Thời gian xử lý: 05/10/2024 07:15:30

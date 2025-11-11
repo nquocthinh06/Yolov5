@@ -1,0 +1,34 @@
+🎬 BÁO CÁO PHÂN TÍCH VIDEO - YOLOv5
+============================================================
+
+📹 THÔNG TIN VIDEO:
+------------------------------
+• File gốc: sample_video-2.mp4
+• File đã xử lý: sample_video-2_processed_20251005_072303.mp4
+• Tổng số frame: 90
+• FPS: 30.0
+• Thời lượng: 3.0 giây
+
+⚙️ CẤU HÌNH MODEL:
+------------------------------
+• Model: yolov5x.pt
+• Độ tin cậy: 60%
+• IoU threshold: 45%
+
+📊 THỐNG KÊ PHÁT HIỆN:
+------------------------------
+• Tổng số người: 0
+• Tổng số phương tiện: 865
+• Frame có phát hiện: 90/90
+• Tỷ lệ frame có đối tượng: 100.0%
+
+🎯 PHÂN TÍCH MẬT ĐỘ:
+------------------------------
+• Mật độ người TB/frame: 0.00
+• Mật độ phương tiện TB/frame: 9.61
+• Mức độ giao thông: Cao - Giao thông đông đúc
+
+💡 KHUYẾN NGHỊ:
+------------------------------
+• Giao thông đông đúc - Cần điều tiết
+• Khu vực hoạt động cao - Tăng cường giám sát
