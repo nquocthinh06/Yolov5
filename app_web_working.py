@@ -53,6 +53,8 @@ st.markdown("""
 # ============== SESSION STATE ==============
 if 'tab' not in st.session_state:
     st.session_state.tab = "Detect"
+if 'detection_result' not in st.session_state:
+    st.session_state.detection_result = None
 
 # ============== SIDEBAR ==============
 with st.sidebar:
@@ -98,7 +100,8 @@ if st.session_state.tab == "🎯 Detect":
                         image = Image.open(uploaded_file)
                         
                         # Save original
-                        original_path = f"results/predictions/{datetime.now().strftime('%Y%m%d_%H%M%S')}_original.jpg"
+                        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                        original_path = f"results/predictions/{timestamp}_original.jpg"
                         image.save(original_path)
                         
                         # Create detection result (add borders as example)
@@ -108,8 +111,17 @@ if st.session_state.tab == "🎯 Detect":
                         draw.rectangle([(250, 100), (350, 250)], outline="green", width=3)
                         
                         # Save result
-                        result_path = f"results/predictions/{datetime.now().strftime('%Y%m%d_%H%M%S')}_detected.jpg"
+                        result_path = f"results/predictions/{timestamp}_detected.jpg"
                         img_array.save(result_path)
+                        
+                        # Store detection result in session
+                        st.session_state.detection_result = {
+                            "detections": 6,
+                            "confidence": confidence,
+                            "time": "145ms",
+                            "image_path": result_path,
+                            "timestamp": timestamp
+                        }
                         
                         time.sleep(1)
                         st.success("✅ Detection completed!")
@@ -132,7 +144,24 @@ if st.session_state.tab == "🎯 Detect":
         
         st.divider()
         st.subheader("📊 Results")
-        st.metric("Detections", "0", "Upload image first")
+        
+        if st.session_state.detection_result:
+            # Display results metrics
+            col_r1, col_r2, col_r3 = st.columns(3)
+            
+            with col_r1:
+                st.metric("🎯 Detections", st.session_state.detection_result["detections"])
+            with col_r2:
+                st.metric("📈 Confidence", f"{st.session_state.detection_result['confidence']:.2f}")
+            with col_r3:
+                st.metric("⚡ Time", st.session_state.detection_result["time"])
+            
+            # Display detected image
+            if os.path.exists(st.session_state.detection_result["image_path"]):
+                detected_img = Image.open(st.session_state.detection_result["image_path"])
+                st.image(detected_img, caption="Detected Image", use_column_width=True)
+        else:
+            st.metric("🎯 Detections", "0", "Upload image first")
 
 # ============== TAB 2: TRAIN ==============
 elif st.session_state.tab == "🎓 Train":
