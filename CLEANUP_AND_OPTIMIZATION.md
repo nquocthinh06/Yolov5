@@ -5,6 +5,7 @@
 ### ✅ CẦN GIỮ LẠI:
 
 #### 1. **Core Training Files** (Lõi của dự án)
+
 - `train.py` - Training script chính
 - `train_traffic_signs.py` - Custom training cho traffic signs
 - `detect.py` - Detection/inference script
@@ -12,17 +13,20 @@
 - `export.py` - Export model
 
 #### 2. **Core Models & Utils** (Thư viện)
+
 - `models/` - Tất cả các model definitions
 - `utils/` - Utility functions
 - `data/` - Dataset configs (YAML files)
 - `datasets/` - Training datasets
 
 #### 3. **Segment & Classify** (Advanced modules)
+
 - `segment/` - Image segmentation
 - `classify/` - Image classification
 - (Nếu dùng, nếu không xóa)
 
 #### 4. **Cấu hình & Tài liệu quan trọng**
+
 - `requirements.txt` - Dependencies
 - `README.md` - Project documentation
 - `LICENSE` - License info
@@ -30,6 +34,7 @@
 - `pyproject.toml` - Project config
 
 #### 5. **Docker** (Nếu dùng Docker)
+
 - `Dockerfile` - Main Docker image
 - `Dockerfile.gpu` - GPU variant
 - `docker-compose.yml` - Docker compose
@@ -39,6 +44,7 @@
 ## ❌ NÊN XÓA (Không liên quan hoặc tạm thời):
 
 ### **Files to Delete:**
+
 ```
 # Hướng dẫn tôi tạo (không cần thiết)
 - HUONG_DAN_NHANH.md
@@ -82,6 +88,7 @@
 ```
 
 ### **Directories to Clean:**
+
 ```
 # Kết quả sau chạy (rebuild lại mỗi lần)
 - runs/
@@ -158,6 +165,7 @@ yolov5-traffic-detection/
 ## 🔧 CHI TIẾT CLEANUP
 
 ### **Step 1: Xóa Files Hướng Dẫn (tôi tạo)**
+
 ```powershell
 # Trong PowerShell, chạy từng cái:
 Remove-Item "HUONG_DAN_NHANH.md" -Force
@@ -168,6 +176,7 @@ Remove-Item "setup-git.ps1" -Force
 ```
 
 ### **Step 2: Xóa Demo/Test Files**
+
 ```powershell
 Remove-Item "demo_result_1.jpg" -Force
 Remove-Item "demo_result_2.jpg" -Force
@@ -179,6 +188,7 @@ Remove-Item "note.txt" -Force
 ```
 
 ### **Step 3: Xóa Thư Mục Tạm Thời**
+
 ```powershell
 Remove-Item "my_images" -Recurse -Force
 Remove-Item "runs" -Recurse -Force
@@ -187,6 +197,7 @@ Remove-Item "video_results" -Recurse -Force
 ```
 
 ### **Step 4: Xóa Docs Thừa**
+
 ```powershell
 Remove-Item "QUICK_START.md" -Force
 Remove-Item "TRAINING_GUIDE.md" -Force
@@ -201,6 +212,7 @@ Remove-Item "yolo_classes_summary.md" -Force
 ```
 
 ### **Step 5: (Tùy chọn) Xóa Scripts Thừa**
+
 ```powershell
 # Nếu chỉ dùng Linux, xóa PowerShell scripts:
 Remove-Item "build-and-run.ps1" -Force
@@ -213,11 +225,11 @@ Remove-Item "docker-run.ps1" -Force
 
 ### **Cần đổi tên:**
 
-| File Hiện Tại | Tên Chuyên Nghiệp | Lý Do |
-|---|---|---|
-| `train_traffic_signs.py` | `train_custom.py` | Rõ ràng hơn |
-| `traffic_detection_gui.py` | `gui_demo.py` hoặc chuyển vào `scripts/` | Ngắn hơn |
-| `simple_yolo_gui.py` | `gui_simple.py` hoặc xóa | Demo UI |
+| File Hiện Tại              | Tên Chuyên Nghiệp                        | Lý Do       |
+| -------------------------- | ---------------------------------------- | ----------- |
+| `train_traffic_signs.py`   | `train_custom.py`                        | Rõ ràng hơn |
+| `traffic_detection_gui.py` | `gui_demo.py` hoặc chuyển vào `scripts/` | Ngắn hơn    |
+| `simple_yolo_gui.py`       | `gui_simple.py` hoặc xóa                 | Demo UI     |
 
 ### **Đổi tên đặc thù của project:**
 
@@ -232,6 +244,7 @@ Rename-Item "traffic_detection_gui.py" "gui_inference.py"
 ## ✨ TẠO CẤU TRÚC MỚI
 
 ### **Tạo thư mục mới:**
+
 ```powershell
 New-Item -ItemType Directory -Name "docs" -Force
 New-Item -ItemType Directory -Name "scripts" -Force
@@ -241,6 +254,7 @@ New-Item -ItemType Directory -Name "results\predictions" -Force
 ```
 
 ### **Di chuyển files vào thư mục phù hợp:**
+
 ```powershell
 # Di chuyển GUI scripts vào scripts/
 Move-Item "gui_inference.py" "scripts/gui_inference.py"
@@ -256,12 +270,13 @@ Move-Item "create_advanced_demo.py" "scripts/create_advanced_demo.py"
 
 Tạo README.md chuyên nghiệp với nội dung:
 
-```markdown
+````markdown
 # YOLOv5 Traffic Sign Detection 🚦
 
 Dự án phát hiện biển báo giao thông sử dụng YOLOv5
 
 ## 📋 Mục lục
+
 - [Cài đặt](#cài-đặt)
 - [Training](#training)
 - [Inference](#inference)
@@ -270,41 +285,47 @@ Dự án phát hiện biển báo giao thông sử dụng YOLOv5
 ## 🔧 Cài đặt
 
 ### Requirements
+
 - Python 3.8+
 - CUDA 11.0+ (tùy chọn, cho GPU)
 - Xem `requirements.txt`
 
 ### Setup
+
 ```bash
 git clone https://github.com/nquocthinh06/Yolov5.git
 cd Yolov5
 pip install -r requirements.txt
 ```
+````
 
 ## 🎯 Training
 
 ```bash
 python train_custom.py \
-    --data data/traffic_signs_vietnam.yaml \
-    --epochs 100 \
-    --img 640 \
-    --batch 16
+  --data data/traffic_signs_vietnam.yaml \
+  --epochs 100 \
+  --img 640 \
+  --batch 16
 ```
 
 ## 🔍 Inference
 
 ```bash
 python detect.py \
-    --source 0 \
-    --weights yolov5s.pt \
-    --conf 0.5
+  --source 0 \
+  --weights yolov5s.pt \
+  --conf 0.5
 ```
 
 ## 📊 Kết quả
+
 [Thêm thông tin về kết quả]
 
 ## 📝 License
+
 Xem file LICENSE
+
 ```
 
 ---
@@ -331,3 +352,4 @@ Xem file LICENSE
 - [ ] Kiểm tra git status
 - [ ] Commit & Push
 
+```

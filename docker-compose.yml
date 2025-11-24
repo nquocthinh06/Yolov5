@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile   # đổi sang Dockerfile.gpu nếu muốn GPU
+      dockerfile: Dockerfile # đổi sang Dockerfile.gpu nếu muốn GPU
     image: thinh/traffic:latest
     working_dir: /app
     environment:
@@ -12,7 +12,7 @@ services:
     volumes:
       - ./datasets:/app/datasets
       - ./runs:/app/runs
-      - ./data:/app/data  # Mount thư mục data để có file yaml
+      - ./data:/app/data # Mount thư mục data để có file yaml
     command: >
       python train_traffic_signs.py
       --data data/traffic_signs_vietnam.yaml

@@ -59,6 +59,7 @@ Nếu không tự động mở, truy cập URL trên bằng tay.
 ## 🎯 Các Module Chính
 
 ### 1️⃣ Detect & Surveillance (🎯)
+
 - **Chức năng:** Phát hiện biển báo giao thông real-time
 - **Cách sử dụng:**
   1. Chọn nguồn: Tải ảnh, video, hoặc dùng webcam
@@ -68,6 +69,7 @@ Nếu không tự động mở, truy cập URL trên bằng tay.
   5. Xem kết quả và thống kê
 
 ### 2️⃣ Train Model (🎓)
+
 - **Chức năng:** Huấn luyện mô hình YOLOv5
 - **Cách sử dụng:**
   1. Tải file YAML của dataset
@@ -80,6 +82,7 @@ Nếu không tự động mở, truy cập URL trên bằng tay.
   5. Theo dõi logs và charts
 
 ### 3️⃣ Validate System (✅)
+
 - **Chức năng:** So sánh hiệu suất các thuật toán AID
 - **Cách sử dụng:**
   1. Điều chỉnh DR, FAR, MTTD weights
@@ -87,6 +90,7 @@ Nếu không tự động mở, truy cập URL trên bằng tay.
   3. Kiểm tra validation metrics
 
 ### 4️⃣ Export Model (📦)
+
 - **Chức năng:** Export mô hình sang nhiều format
 - **Cách sử dụng:**
   1. Tải file .pt weights
@@ -98,12 +102,14 @@ Nếu không tự động mở, truy cập URL trên bằng tay.
 ## 🎨 Giao Diện
 
 ### Màu Sắc
+
 - **Nền:** Xanh đen (#0f172a)
 - **Card:** Xanh tối (#1e293b)
 - **Accent:** Xanh dương (#3b82f6)
 - **Text:** Trắng (#ffffff)
 
 ### Layout
+
 ```
 ┌──────────────────────────────────────┐
 │  🚦 YOLOv5 Traffic Detection        │
@@ -120,17 +126,18 @@ Nếu không tự động mở, truy cập URL trên bằng tay.
 
 ## ⌨️ Phím Tắt
 
-| Phím | Chức Năng |
-|------|----------|
+| Phím     | Chức Năng     |
+| -------- | ------------- |
 | `Ctrl+C` | Dừng ứng dụng |
-| `R` | Refresh trang |
-| `S` | Save kết quả |
+| `R`      | Refresh trang |
+| `S`      | Save kết quả  |
 
 ## 🐛 Troubleshooting
 
 ### ❌ Lỗi: "Port 8501 already in use"
 
 **Giải pháp:**
+
 ```bash
 streamlit run app_web.py --server.port 8502
 ```
@@ -138,6 +145,7 @@ streamlit run app_web.py --server.port 8502
 ### ❌ Lỗi: "ModuleNotFoundError: No module named 'streamlit'"
 
 **Giải pháp:**
+
 ```bash
 pip install streamlit
 ```
@@ -145,6 +153,7 @@ pip install streamlit
 ### ❌ Lỗi: "torch not found"
 
 **Giải pháp:**
+
 ```bash
 pip install torch torchvision
 ```
@@ -152,6 +161,7 @@ pip install torch torchvision
 ### ❌ Ứng dụng chạy chậm
 
 **Giải pháp:**
+
 1. Giảm kích thước ảnh
 2. Dùng batch size nhỏ hơn
 3. Đóng các ứng dụng khác
@@ -160,6 +170,7 @@ pip install torch torchvision
 ### ❌ File upload không hoạt động
 
 **Kiểm tra:**
+
 1. File có định dạng đúng không? (JPG, PNG, MP4, AVI)
 2. File không bị hỏng
 3. File size < 200MB
@@ -167,12 +178,14 @@ pip install torch torchvision
 ## 📊 Tệp Cấu Hình
 
 ### Cần chuẩn bị trước
+
 ```
 data/traffic_signs_vietnam.yaml    # Dataset config
 datasets/traffic_signs_vietnam/    # Training data folder
 ```
 
 ### Sẽ tự tạo
+
 ```
 results/models/                    # Saved models
 results/predictions/               # Detection results
@@ -183,6 +196,7 @@ results/predictions/               # Detection results
 ### Thay đổi cỡ font
 
 Mở `app_web.py`, tìm dòng:
+
 ```python
 font-size: 16px !important;
 ```
@@ -192,6 +206,7 @@ Thay đổi `16` sang số khác (ví dụ: `18`, `20`)
 ### Thay đổi màu sắc
 
 Tìm các dòng:
+
 ```python
 --primary: #3b82f6;
 --bg-dark: #0f172a;
@@ -202,6 +217,7 @@ Thay đổi giá trị hex color
 ### Thay đổi cổng mặc định
 
 Chỉnh sửa khi chạy:
+
 ```bash
 streamlit run app_web.py --server.port YOUR_PORT
 ```
@@ -209,6 +225,7 @@ streamlit run app_web.py --server.port YOUR_PORT
 ## 💾 Lưu Kết Quả
 
 Tất cả kết quả sẽ được lưu tại:
+
 ```
 results/
 ├── models/          # Các mô hình đã train/export
@@ -254,4 +271,3 @@ Gõ lệnh trên và khám phá ứng dụng! 🎉
 **Status:** ✅ Ready to Use
 
 Happy Detecting! 🚦
-

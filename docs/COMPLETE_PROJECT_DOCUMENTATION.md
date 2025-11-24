@@ -24,15 +24,18 @@
 ## 🎯 TỔNG QUAN DỰ ÁN
 
 ### **Mục Đích**
+
 Dự án này xây dựng hệ thống **phát hiện biển báo giao thông Việt Nam** sử dụng mô hình YOLOv5 (You Only Look Once v5) - một trong những mô hình object detection nhanh và chính xác nhất hiện nay.
 
 ### **Ứng Dụng Thực Tế**
+
 - 🚗 Hệ thống nhận diện biển báo cho xe tự lái
 - 📷 Giám sát giao thông tự động
 - 🤖 Hệ thống hỗ trợ lái xe thông minh (ADAS)
 - 📊 Phân tích dữ liệu giao thông
 
 ### **Đặc Điểm Nổi Bật**
+
 - ✅ **Real-time:** Xử lý 30+ frames/giây trên GPU
 - ✅ **Chính xác:** ~95% accuracy trên test set
 - ✅ **Linh hoạt:** Hỗ trợ CPU, GPU, nhiều định dạng input
@@ -233,6 +236,7 @@ yolov5-traffic-detection/
 ```
 
 ### **Legend:**
+
 - 📂 = Thư mục
 - 🐍 = Python file
 - 📄 = Text file
@@ -248,6 +252,7 @@ yolov5-traffic-detection/
 ### **1️⃣ DATA LAYER - Lớp Dữ Liệu**
 
 #### **data/traffic_signs_vietnam.yaml**
+
 ```yaml
 # Dataset configuration file
 # Định nghĩa đường dẫn, số classes, tên classes
@@ -257,30 +262,33 @@ train: images/train
 val: images/val
 test: images/test
 
-nc: 43  # Number of classes
-names: ['speed_limit_30', 'speed_limit_40', ...]  # Class names
+nc: 43 # Number of classes
+names: ["speed_limit_30", "speed_limit_40", ...] # Class names
 ```
 
 **Chức năng:**
+
 - Chỉ định vị trí datasets
 - Định nghĩa số lượng class
 - Ánh xạ class name ↔ ID
 
 #### **data/hyps/ - Hyperparameters**
+
 ```yaml
 # hyp.scratch-med.yaml
 # Các tham số training
-lr0: 0.01              # Learning rate
-lrf: 0.1               # Learning rate final
+lr0: 0.01 # Learning rate
+lrf: 0.1 # Learning rate final
 momentum: 0.937
 weight_decay: 0.0005
 warmup_epochs: 3
-box: 0.05              # Box loss weight
-cls: 0.5               # Class loss weight
-obj: 1.0               # Object loss weight
+box: 0.05 # Box loss weight
+cls: 0.5 # Class loss weight
+obj: 1.0 # Object loss weight
 ```
 
 **Chức năng:**
+
 - Kiểm soát quá trình training
 - Tối ưu hóa performance
 
@@ -289,13 +297,16 @@ obj: 1.0               # Object loss weight
 ### **2️⃣ MODEL LAYER - Lớp Mô Hình**
 
 #### **models/yolo.py** ⭐⭐⭐
+
 ```python
 # Định nghĩa YOLO model architecture
 class Detect(nn.Module):
-    """Detection head - đầu detection"""
-    
+    """Detection head - đầu detection."""
+
+
 class Model(nn.Module):
-    """Main YOLO model"""
+    """Main YOLO model."""
+
     def forward(self, x):
         # Input: (batch, 3, height, width)
         # Output: (batch, num_detections, 85)
@@ -304,21 +315,23 @@ class Model(nn.Module):
 ```
 
 **Cấu trúc mô hình:**
+
 ```
 CSPDarknet Backbone
     ↓
     └─ Extract features at multiple scales
-    
+
 Feature Pyramid Network (FPN) Neck
     ↓
     └─ Combine features from different levels
-    
+
 Detection Head
     ↓
     └─ Output predictions (boxes, confidence, classes)
 ```
 
 #### **models/common.py**
+
 ```python
 # Các layer phổ biến
 class Conv(nn.Module):          # Convolution + BatchNorm + Activation
@@ -333,59 +346,74 @@ class Concat(nn.Module):        # Feature concatenation
 ### **3️⃣ UTILS LAYER - Lớp Tiện Ích**
 
 #### **utils/general.py** ⭐⭐⭐
+
 Chứa các hàm utility quan trọng:
 
 ```python
 def check_img_size(imgsz, s=32):
-    """Kiểm tra kích thước ảnh chia hết cho stride"""
+    """Kiểm tra kích thước ảnh chia hết cho stride."""
 
-def increment_path(path, exist_ok=False, sep=''):
-    """Tạo unique save path"""
+
+def increment_path(path, exist_ok=False, sep=""):
+    """Tạo unique save path."""
+
 
 def colorstr(*input):
-    """Tô màu text output"""
+    """Tô màu text output."""
 
-def get_latest_run(search_dir='runs/detect'):
-    """Lấy run mới nhất"""
+
+def get_latest_run(search_dir="runs/detect"):
+    """Lấy run mới nhất."""
+
 
 def xyxy2xywh(x):
-    """Convert bbox format: (x1,y1,x2,y2) -> (xc,yc,w,h)"""
+    """Convert bbox format: (x1,y1,x2,y2) -> (xc,yc,w,h)."""
+
 
 def xywh2xyxy(x):
-    """Ngược lại"""
+    """Ngược lại."""
+
 
 def box_iou(box1, box2):
-    """Tính IoU (Intersection over Union)"""
+    """Tính IoU (Intersection over Union)."""
+
 
 def non_max_suppression(prediction, conf_thres=0.25, iou_thres=0.45):
-    """NMS - loại bỏ boxes trùng lặp"""
+    """NMS - loại bỏ boxes trùng lặp."""
 ```
 
 #### **utils/metrics.py**
+
 ```python
 def ap_per_class(tp, conf, pred_cls, target_cls):
-    """Tính Average Precision per class"""
+    """Tính Average Precision per class."""
+
 
 def confusionmatrix(preds, labels):
-    """Tạo confusion matrix"""
+    """Tạo confusion matrix."""
+
 
 def compute_ap(recall, precision):
-    """Tính AP from recall-precision curve"""
+    """Tính AP from recall-precision curve."""
 ```
 
 #### **utils/plots.py**
+
 ```python
 def plot_results(csv_file):
-    """Vẽ training results từ CSV"""
+    """Vẽ training results từ CSV."""
+
 
 def plot_confusion_matrix(cm, nc):
-    """Vẽ confusion matrix"""
+    """Vẽ confusion matrix."""
+
 
 def plot_images(images, targets, fname):
-    """Vẽ images với annotations"""
+    """Vẽ images với annotations."""
 ```
 
 #### **utils/augmentations.py**
+
 ```python
 # Data augmentation techniques
 class Albumentations:         # Advanced augmentation
@@ -403,6 +431,7 @@ class Mosaic:                  # Combine 4 images
 **Chức năng:** Phát hiện objects trong ảnh/video/webcam
 
 **Flow:**
+
 ```
 Parse arguments
     ↓
@@ -422,6 +451,7 @@ Save output
 ```
 
 **Ví dụ:**
+
 ```bash
 # Ảnh
 python detect.py --source test.jpg --weights yolov5s.pt
@@ -441,6 +471,7 @@ python detect.py --source images/
 **Chức năng:** Huấn luyện model trên dataset mới
 
 **Flow:**
+
 ```
 Load config
     ↓
@@ -462,13 +493,14 @@ Save best model
 ```
 
 **Ví dụ:**
+
 ```bash
 python train.py \
-    --data data/traffic_signs_vietnam.yaml \
-    --epochs 100 \
-    --img 640 \
-    --batch 16 \
-    --weights yolov5s.pt
+  --data data/traffic_signs_vietnam.yaml \
+  --epochs 100 \
+  --img 640 \
+  --batch 16 \
+  --weights yolov5s.pt
 ```
 
 #### **train_custom.py** ⭐⭐ (CUSTOM TRAINING)
@@ -476,6 +508,7 @@ python train.py \
 **Chức năng:** Training đã được tùy chỉnh cho traffic signs
 
 **Khác biệt:**
+
 - Pre-configured cho dataset traffic signs
 - Tối ưu hóa hyperparameters sẵn
 - Hỗ trợ tiếng Việt
@@ -485,6 +518,7 @@ python train.py \
 **Chức năng:** Đánh giá model trên validation/test set
 
 **Output:**
+
 - Precision, Recall, F1 score
 - Confusion matrix
 - Per-class AP
@@ -494,6 +528,7 @@ python train.py \
 **Chức năng:** Export model sang các format khác
 
 **Formats:**
+
 ```
 PyTorch (.pt)
 ONNX (.onnx)
@@ -508,18 +543,22 @@ CoreML (.mlmodel)
 ### **5️⃣ GUI & SCRIPTS**
 
 #### **scripts/gui_inference.py** ⭐
+
 Giao diện đồ họa cho detection
 
 **Tính năng:**
+
 - Upload ảnh/video
 - Thực time detection
 - Adjust confidence threshold
 - Save results
 
 #### **scripts/gui_simple.py**
+
 GUI đơn giản hơn
 
 #### **scripts/create_demo_video.py**
+
 Tạo video demo từ detection results
 
 ---
@@ -527,33 +566,40 @@ Tạo video demo từ detection results
 ## 💻 CÔNG NGHỆ SỬ DỤNG
 
 ### **Deep Learning Framework**
+
 - **PyTorch** 1.9+: Deep learning framework
 - **CUDA** 11.0+: GPU acceleration (tùy chọn)
 - **cuDNN**: GPU computation library
 
 ### **Computer Vision**
+
 - **OpenCV**: Image processing
 - **Pillow (PIL)**: Image manipulation
 - **torchvision**: Vision utilities
 
 ### **Data Processing**
+
 - **NumPy**: Numerical computing
 - **Pandas**: Data analysis
 - **SciPy**: Scientific computing
 
 ### **Visualization**
+
 - **Matplotlib**: Plotting
 - **Seaborn**: Statistical visualization
 
 ### **UI/UX**
+
 - **PyQt5** hoặc **Tkinter**: GUI framework
 
 ### **Serialization**
+
 - **JSON**: Data format
 - **YAML**: Config format
 - **HDF5**: Large data storage
 
 ### **Deployment**
+
 - **ONNX**: Model format portability
 - **TensorRT**: GPU optimization
 - **Docker**: Containerization
@@ -645,14 +691,14 @@ BACKBONE - CSPDarknet
 ├─ C3: 256 channels (9 bottlenecks)
 └─ C3: 512 channels (9 bottlenecks)
     ↓ Output: (B, 512, 20, 20)
-    
+
 NECK - Feature Pyramid
 ├─ Upsample & concat với 256
 ├─ Upsample & concat với 128
 ├─ Downsample & concat từ 128
 └─ Downsample & concat từ 256
     ↓ Outputs: 3 scales
-    
+
 HEAD - Detection
 ├─ Scale 1: (B, 255, 80, 80)  - Small objects
 ├─ Scale 2: (B, 255, 40, 40)  - Medium objects
@@ -767,20 +813,19 @@ python export.py \
 
 ```python
 import torch
-from models.yolo import Model
 
 # 1. Load model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
+model = torch.hub.load("ultralytics/yolov5", "yolov5s")
 
 # 2. Inference
-results = model('path/to/image.jpg')
+results = model("path/to/image.jpg")
 
 # 3. Results
 print(results.pandas().xyxy[0])  # Bounding boxes
-results.save()                    # Save results
+results.save()  # Save results
 
 # 4. Custom model
-model = torch.load('runs/train/exp/weights/best.pt')
+model = torch.load("runs/train/exp/weights/best.pt")
 model.eval()
 with torch.no_grad():
     predictions = model(images)
@@ -788,17 +833,17 @@ with torch.no_grad():
 
 ### **Tham Số Chính**
 
-| Tham Số | Mô Tả | Mặc Định | Range |
-|---------|-------|---------|-------|
-| **conf** | Confidence threshold | 0.5 | 0-1 |
-| **iou** | NMS IoU threshold | 0.45 | 0-1 |
-| **imgsz** | Image size | 640 | 320-1280 |
-| **device** | Device | cpu | cpu/0/1/... |
-| **batch** | Batch size | 16 | 1-256 |
-| **epochs** | Training epochs | 100 | 1-1000 |
-| **lr0** | Initial LR | 0.01 | 0.0001-0.1 |
-| **momentum** | Momentum | 0.937 | 0-1 |
-| **weight_decay** | Weight decay | 0.0005 | 0-0.1 |
+| Tham Số          | Mô Tả                | Mặc Định | Range       |
+| ---------------- | -------------------- | -------- | ----------- |
+| **conf**         | Confidence threshold | 0.5      | 0-1         |
+| **iou**          | NMS IoU threshold    | 0.45     | 0-1         |
+| **imgsz**        | Image size           | 640      | 320-1280    |
+| **device**       | Device               | cpu      | cpu/0/1/... |
+| **batch**        | Batch size           | 16       | 1-256       |
+| **epochs**       | Training epochs      | 100      | 1-1000      |
+| **lr0**          | Initial LR           | 0.01     | 0.0001-0.1  |
+| **momentum**     | Momentum             | 0.937    | 0-1         |
+| **weight_decay** | Weight decay         | 0.0005   | 0-0.1       |
 
 ---
 
@@ -808,12 +853,13 @@ with torch.no_grad():
 
 ```bash
 python detect.py \
-    --source path/to/image.jpg \
-    --weights yolov5s.pt \
-    --conf 0.5
+  --source path/to/image.jpg \
+  --weights yolov5s.pt \
+  --conf 0.5
 ```
 
 **Output:**
+
 - `runs/detect/exp/` folder
 - `image.jpg` (with boxes drawn)
 - `results.txt` (detections)
@@ -822,35 +868,36 @@ python detect.py \
 
 ```bash
 python detect.py \
-    --source video.mp4 \
-    --weights yolov5s.pt \
-    --conf 0.5 \
-    --device 0
+  --source video.mp4 \
+  --weights yolov5s.pt \
+  --conf 0.5 \
+  --device 0
 ```
 
 ### **SCENARIO 3: Phát Hiện Real-time Từ Webcam**
 
 ```bash
 python detect.py \
-    --source 0 \
-    --weights yolov5s.pt \
-    --conf 0.45
+  --source 0 \
+  --weights yolov5s.pt \
+  --conf 0.45
 ```
 
 ### **SCENARIO 4: Training Trên Custom Dataset**
 
 ```bash
 python train_custom.py \
-    --data data/traffic_signs_vietnam.yaml \
-    --epochs 100 \
-    --batch 16 \
-    --img 640 \
-    --weights yolov5s.pt \
-    --device 0 \
-    --save-period 10
+  --data data/traffic_signs_vietnam.yaml \
+  --epochs 100 \
+  --batch 16 \
+  --img 640 \
+  --weights yolov5s.pt \
+  --device 0 \
+  --save-period 10
 ```
 
 **Outputs:**
+
 - `runs/train/exp*/weights/best.pt` - Best model
 - `runs/train/exp*/results.csv` - Training metrics
 - `runs/train/exp*/confusion_matrix.png` - Confusion matrix
@@ -859,19 +906,19 @@ python train_custom.py \
 
 ```bash
 python val.py \
-    --data data/traffic_signs_vietnam.yaml \
-    --weights runs/train/exp/weights/best.pt \
-    --batch-size 32 \
-    --device 0
+  --data data/traffic_signs_vietnam.yaml \
+  --weights runs/train/exp/weights/best.pt \
+  --batch-size 32 \
+  --device 0
 ```
 
 ### **SCENARIO 6: Export Model**
 
 ```bash
 python export.py \
-    --weights runs/train/exp/weights/best.pt \
-    --include onnx \
-    --device 0
+  --weights runs/train/exp/weights/best.pt \
+  --include onnx \
+  --device 0
 ```
 
 ---
@@ -883,6 +930,7 @@ python export.py \
 **Nguyên nhân:** Batch size quá lớn
 
 **Giải pháp:**
+
 ```bash
 # Giảm batch size
 python train.py --batch-size 8
@@ -896,12 +944,14 @@ python -c "import torch; torch.cuda.empty_cache()"
 
 ### **❌ Lỗi 2: Model Không Phát Hiện Được**
 
-**Nguyên nhân:** 
+**Nguyên nhân:**
+
 - Confidence threshold quá cao
 - Model không được train đủ
 - Input ảnh chất lượng kém
 
 **Giải pháp:**
+
 ```bash
 # Giảm confidence
 python detect.py --conf 0.3
@@ -913,6 +963,7 @@ python val.py --weights best.pt
 ### **❌ Lỗi 3: File Không Tìm Thấy**
 
 **Giải pháp:**
+
 ```bash
 # Kiểm tra đường dẫn
 ls datasets/traffic_signs_vietnam/images/train/
@@ -924,6 +975,7 @@ python train.py --data C:\path\to\data.yaml
 ### **❌ Lỗi 4: Training Quá Chậm**
 
 **Giải pháp:**
+
 ```bash
 # Dùng GPU
 python train.py --device 0
@@ -941,49 +993,49 @@ python train.py --batch 32
 
 ### **Model Performance**
 
-| Metric | Value | Unit |
-|--------|-------|------|
-| **mAP50** | 0.95 | accuracy |
-| **mAP50-95** | 0.78 | accuracy |
-| **Precision** | 0.94 | % |
-| **Recall** | 0.92 | % |
-| **FPS (GPU)** | 45 | frame/sec |
-| **FPS (CPU)** | 8 | frame/sec |
-| **Model Size** | 14 | MB |
-| **Inference Time** | 22 | ms |
+| Metric             | Value | Unit      |
+| ------------------ | ----- | --------- |
+| **mAP50**          | 0.95  | accuracy  |
+| **mAP50-95**       | 0.78  | accuracy  |
+| **Precision**      | 0.94  | %         |
+| **Recall**         | 0.92  | %         |
+| **FPS (GPU)**      | 45    | frame/sec |
+| **FPS (CPU)**      | 8     | frame/sec |
+| **Model Size**     | 14    | MB        |
+| **Inference Time** | 22    | ms        |
 
 ### **Dataset Statistics**
 
-| Metric | Value |
-|--------|-------|
-| Total images | 1200 |
-| Classes | 43 |
-| Train/Val/Test | 70%/15%/15% |
-| Avg objects per image | 2.3 |
+| Metric                | Value       |
+| --------------------- | ----------- |
+| Total images          | 1200        |
+| Classes               | 43          |
+| Train/Val/Test        | 70%/15%/15% |
+| Avg objects per image | 2.3         |
 
 ---
 
 ## 🚀 NEXT STEPS
 
 1. **Optimize Model:**
-   - Quantization (INT8)
-   - Pruning
-   - Knowledge distillation
+    - Quantization (INT8)
+    - Pruning
+    - Knowledge distillation
 
 2. **Deploy:**
-   - Docker deployment
-   - REST API
-   - Mobile app
+    - Docker deployment
+    - REST API
+    - Mobile app
 
 3. **Improve:**
-   - Collect more data
-   - Train longer
-   - Ensemble models
+    - Collect more data
+    - Train longer
+    - Ensemble models
 
 4. **Monitor:**
-   - Set up logging
-   - Performance tracking
-   - A/B testing
+    - Set up logging
+    - Performance tracking
+    - A/B testing
 
 ---
 
@@ -1004,15 +1056,14 @@ python train.py --batch 32
 
 ## 💡 TÓM TẮT NHANH
 
-| Công Việc | File | Lệnh |
-|-----------|------|------|
-| **Phát Hiện** | detect.py | `python detect.py --source image.jpg` |
-| **Training** | train_custom.py | `python train_custom.py --data data/*.yaml` |
-| **Validation** | val.py | `python val.py --weights best.pt` |
-| **Export** | export.py | `python export.py --include onnx` |
-| **GUI** | scripts/gui_inference.py | `python scripts/gui_inference.py` |
+| Công Việc      | File                     | Lệnh                                        |
+| -------------- | ------------------------ | ------------------------------------------- |
+| **Phát Hiện**  | detect.py                | `python detect.py --source image.jpg`       |
+| **Training**   | train_custom.py          | `python train_custom.py --data data/*.yaml` |
+| **Validation** | val.py                   | `python val.py --weights best.pt`           |
+| **Export**     | export.py                | `python export.py --include onnx`           |
+| **GUI**        | scripts/gui_inference.py | `python scripts/gui_inference.py`           |
 
 ---
 
 **CHÚC BẠN SỬ DỤNG DỰ ÁN HIỆU QUẢ! 🎯**
-
