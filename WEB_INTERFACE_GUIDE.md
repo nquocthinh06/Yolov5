@@ -7,9 +7,11 @@ Professional web-based dashboard for managing the complete YOLOv5 traffic sign d
 ## ✨ Features
 
 ### 1️⃣ **Detect & Surveillance** 🎯
+
 Real-time traffic sign detection with visualization
 
 **Capabilities:**
+
 - 📤 Upload image or video files
 - 📹 Webcam real-time detection
 - ⚙️ Adjustable confidence threshold (0.0-1.0)
@@ -19,6 +21,7 @@ Real-time traffic sign detection with visualization
 - 📋 Results table with details (class, confidence, coordinates)
 
 **How to Use:**
+
 1. Select "📤 Upload File" or "📹 Use Webcam"
 2. Upload your image/video
 3. Adjust confidence and IoU thresholds
@@ -26,9 +29,11 @@ Real-time traffic sign detection with visualization
 5. View results in the preview and statistics
 
 ### 2️⃣ **Train Model** 🎓
+
 Complete model training interface with logging and monitoring
 
 **Configuration Options:**
+
 - 📁 Dataset YAML file upload
 - ⚖️ Initial weights (optional)
 - 🔢 Training parameters:
@@ -42,6 +47,7 @@ Complete model training interface with logging and monitoring
   - Weight decay
 
 **Monitoring:**
+
 - 📈 Real-time epoch progress
 - 📊 Loss tracking
 - 🎯 mAP50 and mAP50-95 metrics
@@ -49,6 +55,7 @@ Complete model training interface with logging and monitoring
 - 📉 Interactive training progress charts
 
 **How to Use:**
+
 1. Upload dataset YAML file (e.g., `data/traffic_signs_vietnam.yaml`)
 2. Configure training parameters
 3. Set advanced hyperparameters (optional)
@@ -57,9 +64,11 @@ Complete model training interface with logging and monitoring
 6. Click "⏹️ Stop Training" to halt
 
 ### 3️⃣ **Validate AID** ✅
+
 Algorithm performance comparison and validation
 
 **Features:**
+
 - ⚙️ Configure Performance Index (PI) weights
 - 🔍 Compare different AID algorithms
 - 📊 Performance metrics:
@@ -72,20 +81,24 @@ Algorithm performance comparison and validation
   - Overall Accuracy
 
 **Algorithms Compared:**
+
 - AID1-AID7 with detailed performance comparison
 - Automatic highlighting of best performer
 - Customizable weight parameters
 
 **How to Use:**
+
 1. Adjust DR, FAR, and MTTD weights
 2. Review algorithm comparison table
 3. Check validation metrics
 4. Identify best performing algorithm
 
 ### 4️⃣ **Export Model** 📦
+
 Multi-format model export for deployment
 
 **Export Formats:**
+
 - ✅ ONNX (.onnx) - Cross-platform compatibility
 - TorchScript (.torchscript) - PyTorch native
 - TensorRT (.engine) - GPU-optimized inference
@@ -93,6 +106,7 @@ Multi-format model export for deployment
 - TensorFlow Lite (.tflite) - Mobile deployment
 
 **Configuration:**
+
 - Device selection (CPU/GPU)
 - Half precision option (FP16)
 - Inference optimization
@@ -102,6 +116,7 @@ Multi-format model export for deployment
   - Platform compatibility
 
 **How to Use:**
+
 1. Upload model weights (.pt file)
 2. Select target device
 3. Choose export formats
@@ -113,22 +128,26 @@ Multi-format model export for deployment
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Python 3.8+
 - pip (Python package manager)
 
 ### Installation
 
 1. **Install Streamlit and dependencies:**
+
 ```bash
 pip install streamlit plotly pillow pandas torch torchvision
 ```
 
 2. **Run the application:**
+
 ```bash
 streamlit run app_web.py
 ```
 
 3. **Access in browser:**
+
 ```
 http://localhost:8501
 ```
@@ -138,6 +157,7 @@ http://localhost:8501
 ## 🎨 UI Design Details
 
 ### Color Scheme
+
 - **Primary Background:** #121212 (Dark)
 - **Secondary Background:** #1e1e1e (Darker)
 - **Card Background:** #2d2d2d
@@ -148,6 +168,7 @@ http://localhost:8501
 - **Border:** #3e3e3e
 
 ### Design Features
+
 - 📱 Responsive layout with two-column design
 - 🎯 Sidebar navigation for module selection
 - 📊 Metric cards with delta indicators
@@ -157,6 +178,7 @@ http://localhost:8501
 - 🌊 Gradient backgrounds
 
 ### Layout Structure
+
 ```
 ┌─────────────────────────────────────────┐
 │         YOLOv5 Traffic Detection        │
@@ -180,18 +202,21 @@ http://localhost:8501
 ### Dashboard Components
 
 **1. Input & Controls (Left Column)**
+
 - File upload widgets
 - Parameter sliders
 - Configuration inputs
 - Action buttons
 
 **2. Preview & Results (Right Column)**
+
 - Image/video preview area
 - Live statistics display
 - Results visualization
 - Metric cards
 
 **3. Sidebar**
+
 - Navigation between modules
 - Model information metrics
 - System status
@@ -202,12 +227,14 @@ http://localhost:8501
 ## 💡 Usage Tips
 
 ### Detection Best Practices
+
 - Use **confidence 0.5** for balanced precision/recall
 - Lower confidence (0.3-0.4) for improved recall
 - Higher confidence (0.6-0.7) for improved precision
 - IoU of **0.45** is standard for NMS
 
 ### Training Tips
+
 - Start with **100 epochs** for quick tests
 - Use **batch 16** for typical GPU (8GB VRAM)
 - Reduce batch if running out of memory
@@ -215,12 +242,14 @@ http://localhost:8501
 - Stop if metrics plateau
 
 ### Validation Tips
+
 - Always validate after training
 - Check if precision/recall are balanced
 - Compare with baseline models
 - Use confusion matrix for error analysis
 
 ### Export Tips
+
 - Export to **ONNX** for cross-platform use
 - Export to **TensorRT** for GPU deployment
 - Export to **TFLite** for mobile apps
@@ -231,23 +260,27 @@ http://localhost:8501
 ## 🔧 Troubleshooting
 
 ### Port Already in Use
+
 ```bash
 streamlit run app_web.py --server.port 8502
 ```
 
 ### Slow Performance
+
 - Reduce image size in training
 - Use smaller batch size
 - Enable GPU if available
 - Reduce model size (use yolov5n instead of yolov5x)
 
 ### Out of Memory
+
 - Reduce batch size
 - Use lower resolution images
 - Use smaller model variant
 - Enable FP16 precision
 
 ### File Upload Issues
+
 - Check file format (JPG, PNG, MP4, AVI)
 - Verify file size < 200MB
 - Ensure file is valid/not corrupted
@@ -257,6 +290,7 @@ streamlit run app_web.py --server.port 8502
 ## 📝 Configuration Files
 
 ### Required Files
+
 ```
 data/traffic_signs_vietnam.yaml     # Dataset config
 datasets/traffic_signs_vietnam/     # Training data
@@ -265,6 +299,7 @@ yolov5s.pt                         # Pre-trained weights
 ```
 
 ### Generated Files
+
 ```
 results/models/best.pt             # Best trained model
 results/predictions/               # Detection results
@@ -276,6 +311,7 @@ runs/train/exp*/                   # Training logs
 ## 🌐 API Integration (Future)
 
 The web interface can be extended with:
+
 - REST API endpoints
 - WebSocket for real-time updates
 - Database integration
@@ -308,6 +344,7 @@ The web interface can be extended with:
 ## 📞 Support
 
 For issues or questions:
+
 1. Check troubleshooting section
 2. Review COMPLETE_PROJECT_DOCUMENTATION.md
 3. Check GitHub issues
@@ -320,4 +357,3 @@ For issues or questions:
 **Status:** ✅ Production Ready
 
 🚀 **Happy Detecting!**
-

@@ -7,6 +7,7 @@
 ## 📊 WHAT WAS ACCOMPLISHED
 
 ### 1️⃣ **Source Code Organization** ✓
+
 - ✅ Cleaned up unnecessary files (25+ files removed)
 - ✅ Reorganized into professional structure
 - ✅ Created new directories: `docs/`, `scripts/`, `results/`
@@ -14,6 +15,7 @@
 - ✅ Moved GUI scripts to `scripts/` folder
 
 ### 2️⃣ **Comprehensive Documentation** ✓
+
 - ✅ **README.md** - Professional project overview with badges
 - ✅ **docs/COMPLETE_PROJECT_DOCUMENTATION.md** (1000+ lines)
   - Architecture explanation & diagrams
@@ -28,6 +30,7 @@
 - ✅ **RUN_WEB_APP.md** - Step-by-step running instructions
 
 ### 3️⃣ **Professional Web Interface** ✓
+
 - ✅ Built with **Streamlit** - modern, responsive
 - ✅ Dark theme with blue accents
 - ✅ Large, readable fonts (16px+)
@@ -35,6 +38,7 @@
 - ✅ Fully functional 4 main modules:
 
 #### **Module 1: 🎯 Detect & Surveillance**
+
 - Real-time traffic sign detection
 - File upload (image/video/webcam)
 - Adjustable confidence threshold (0-1)
@@ -44,6 +48,7 @@
 - Save functionality
 
 #### **Module 2: 🎓 Train Model**
+
 - Dataset YAML configuration
 - Complete hyperparameter settings:
   - Epochs, batch size, image size
@@ -55,6 +60,7 @@
 - Start/Stop training buttons
 
 #### **Module 3: ✅ Validate System**
+
 - AID algorithm performance comparison
 - Performance Index configuration
 - 7 algorithms compared with metrics
@@ -62,6 +68,7 @@
 - Best algorithm highlighting
 
 #### **Module 4: 📦 Export Model**
+
 - Multi-format export support:
   - ONNX (.onnx)
   - TorchScript (.torchscript)
@@ -73,6 +80,7 @@
 - Optimization options
 
 ### 4️⃣ **GitHub Repository** ✓
+
 - ✅ All files pushed to GitHub
 - ✅ Repository: https://github.com/nquocthinh06/Yolov5
 - ✅ Branch: main (up to date)
@@ -152,6 +160,7 @@ yolov5-traffic-detection/
 ## 🚀 QUICK START
 
 ### Option 1: Use Web Interface (Recommended)
+
 ```bash
 # Install dependencies
 pip install streamlit plotly pillow pandas torch torchvision opencv-python
@@ -163,6 +172,7 @@ streamlit run app_web.py
 ```
 
 ### Option 2: Use Command Line
+
 ```bash
 # Detection
 python detect.py --source image.jpg --weights yolov5s.pt
@@ -178,6 +188,7 @@ python export.py --weights best.pt --include onnx
 ```
 
 ### Option 3: Use GUI Scripts
+
 ```bash
 python scripts/gui_inference.py
 ```
@@ -187,6 +198,7 @@ python scripts/gui_inference.py
 ## 📊 KEY FEATURES
 
 ### ✨ Complete Detection System
+
 - Real-time traffic sign detection
 - Support for images, videos, webcam
 - Adjustable confidence and IoU thresholds
@@ -194,6 +206,7 @@ python scripts/gui_inference.py
 - Multi-GPU support
 
 ### 🎓 Training Capabilities
+
 - Transfer learning from pre-trained models
 - Custom dataset training
 - Hyperparameter tuning
@@ -201,12 +214,14 @@ python scripts/gui_inference.py
 - Model checkpointing
 
 ### ✅ Validation & Evaluation
+
 - Comprehensive metrics (Precision, Recall, F1, mAP)
 - Per-class performance analysis
 - Confusion matrix generation
 - Algorithm comparison
 
 ### 📦 Export & Deployment
+
 - Multiple format export (ONNX, TensorRT, CoreML, TFLite)
 - GPU and CPU optimization
 - Mobile deployment support
@@ -226,13 +241,13 @@ python scripts/gui_inference.py
 
 ## 📈 PERFORMANCE METRICS
 
-| Metric | Value |
-|--------|-------|
-| **Model Size** | 14 MB (YOLOv5s) |
-| **Inference FPS (GPU)** | 45+ FPS |
-| **Inference FPS (CPU)** | 8+ FPS |
-| **Accuracy (mAP50)** | ~95% |
-| **Training Time** | 100 epochs ≈ 2-3 hours (GPU) |
+| Metric                  | Value                        |
+| ----------------------- | ---------------------------- |
+| **Model Size**          | 14 MB (YOLOv5s)              |
+| **Inference FPS (GPU)** | 45+ FPS                      |
+| **Inference FPS (CPU)** | 8+ FPS                       |
+| **Accuracy (mAP50)**    | ~95%                         |
+| **Training Time**       | 100 epochs ≈ 2-3 hours (GPU) |
 
 ---
 
@@ -262,41 +277,49 @@ python scripts/gui_inference.py
 
 ## 📚 DOCUMENTATION FILES
 
-| File | Purpose |
-|------|---------|
-| **README.md** | Project overview, quick start |
-| **docs/COMPLETE_PROJECT_DOCUMENTATION.md** | Comprehensive technical docs |
-| **CLEANUP_AND_OPTIMIZATION.md** | Code organization guide |
-| **WEB_INTERFACE_GUIDE.md** | Web UI features & usage |
-| **RUN_WEB_APP.md** | Installation & run instructions |
-| **PROJECT_SUMMARY.md** | This file - what was done |
+| File                                       | Purpose                         |
+| ------------------------------------------ | ------------------------------- |
+| **README.md**                              | Project overview, quick start   |
+| **docs/COMPLETE_PROJECT_DOCUMENTATION.md** | Comprehensive technical docs    |
+| **CLEANUP_AND_OPTIMIZATION.md**            | Code organization guide         |
+| **WEB_INTERFACE_GUIDE.md**                 | Web UI features & usage         |
+| **RUN_WEB_APP.md**                         | Installation & run instructions |
+| **PROJECT_SUMMARY.md**                     | This file - what was done       |
 
 ---
 
 ## 🔄 DEVELOPMENT WORKFLOW
 
 ### 1. Detection Task
+
 ```bash
 python detect.py --source input.jpg --weights yolov5s.pt --conf 0.5
 ```
+
 → Output: `runs/detect/exp*/` with visualized results
 
 ### 2. Training Task
+
 ```bash
 python train_custom.py --data data/traffic_signs_vietnam.yaml --epochs 100
 ```
+
 → Output: `runs/train/exp*/` with trained weights
 
 ### 3. Validation Task
+
 ```bash
 python val.py --weights runs/train/exp/weights/best.pt
 ```
+
 → Output: Performance metrics and confusion matrix
 
 ### 4. Export Task
+
 ```bash
 python export.py --weights best.pt --include onnx tensorrt
 ```
+
 → Output: `runs/detect/exp/` with exported models
 
 ---
@@ -304,19 +327,22 @@ python export.py --weights best.pt --include onnx tensorrt
 ## 🛠️ CUSTOMIZATION OPTIONS
 
 ### Change Detection Threshold
+
 ```bash
-python detect.py --source img.jpg --conf 0.3  # Lower = more detections
-python detect.py --source img.jpg --conf 0.7  # Higher = fewer detections
+python detect.py --source img.jpg --conf 0.3 # Lower = more detections
+python detect.py --source img.jpg --conf 0.7 # Higher = fewer detections
 ```
 
 ### Use Different Model Size
+
 ```bash
 # Available: yolov5n, yolov5s, yolov5m, yolov5l, yolov5x
-python detect.py --weights yolov5m.pt  # Medium
-python detect.py --weights yolov5l.pt  # Large
+python detect.py --weights yolov5m.pt # Medium
+python detect.py --weights yolov5l.pt # Large
 ```
 
 ### Custom Dataset Training
+
 1. Prepare dataset in YOLO format
 2. Create YAML config file
 3. Run: `python train_custom.py --data your_data.yaml`
@@ -325,12 +351,12 @@ python detect.py --weights yolov5l.pt  # Large
 
 ## 🐛 COMMON ISSUES & SOLUTIONS
 
-| Issue | Solution |
-|-------|----------|
-| Port 8501 in use | `streamlit run app_web.py --server.port 8502` |
-| Out of memory | Reduce batch size or image size |
-| Slow training | Enable GPU or reduce epochs |
-| Detection failures | Lower confidence threshold |
+| Issue              | Solution                                      |
+| ------------------ | --------------------------------------------- |
+| Port 8501 in use   | `streamlit run app_web.py --server.port 8502` |
+| Out of memory      | Reduce batch size or image size               |
+| Slow training      | Enable GPU or reduce epochs                   |
+| Detection failures | Lower confidence threshold                    |
 
 ---
 
@@ -343,13 +369,14 @@ python detect.py --weights yolov5l.pt  # Large
 ✅ **GPU Support** - CUDA acceleration available  
 ✅ **Multiple Formats** - ONNX, TensorRT, CoreML export  
 ✅ **Professional UI** - Modern, responsive design  
-✅ **GitHub Ready** - Version controlled and backed up  
+✅ **GitHub Ready** - Version controlled and backed up
 
 ---
 
 ## 📞 NEXT STEPS
 
 1. **Run the web interface:**
+
    ```bash
    streamlit run app_web.py
    ```
@@ -381,8 +408,8 @@ This project is licensed under the **GNU General Public License v3.0** - see `LI
 
 ## 👥 CONTRIBUTORS
 
-- **Project Maintainer:** nquocthinh06  
-- **Repository:** https://github.com/nquocthinh06/Yolov5  
+- **Project Maintainer:** nquocthinh06
+- **Repository:** https://github.com/nquocthinh06/Yolov5
 - **Organization:** RH CVDT TP HCM (ITS Dashboard)
 
 ---
@@ -390,6 +417,7 @@ This project is licensed under the **GNU General Public License v3.0** - see `LI
 ## 🎉 CONCLUSION
 
 The YOLOv5 Traffic Detection project is now:
+
 - ✅ **Fully Built** with professional web interface
 - ✅ **Thoroughly Documented** with 2000+ lines of guides
 - ✅ **Production Ready** for deployment
@@ -405,4 +433,3 @@ The YOLOv5 Traffic Detection project is now:
 **Status:** ✅ PRODUCTION READY
 
 **🌟 Thank you for using YOLOv5 Traffic Detection! 🌟**
-

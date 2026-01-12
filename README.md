@@ -39,17 +39,20 @@ Vietnamese traffic sign detection system using YOLOv5 object detection framework
 ### Setup nhanh
 
 #### 1. Clone repository
+
 ```bash
 git clone https://github.com/nquocthinh06/Yolov5.git
 cd Yolov5
 ```
 
 #### 2. Cài đặt dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 #### 3. Download pre-trained weights (tùy chọn)
+
 ```bash
 wget https://github.com/ultralytics/yolov5/releases/download/v6.2/yolov5s.pt
 ```
@@ -60,29 +63,29 @@ wget https://github.com/ultralytics/yolov5/releases/download/v6.2/yolov5s.pt
 
 ```bash
 python detect.py \
-    --source path/to/image.jpg \
-    --weights yolov5s.pt \
-    --conf 0.5 \
-    --iou 0.45
+  --source path/to/image.jpg \
+  --weights yolov5s.pt \
+  --conf 0.5 \
+  --iou 0.45
 ```
 
 ### Inference trên video
 
 ```bash
 python detect.py \
-    --source path/to/video.mp4 \
-    --weights yolov5s.pt \
-    --conf 0.5 \
-    --device 0
+  --source path/to/video.mp4 \
+  --weights yolov5s.pt \
+  --conf 0.5 \
+  --device 0
 ```
 
 ### Inference từ webcam
 
 ```bash
 python detect.py \
-    --source 0 \
-    --weights yolov5s.pt \
-    --conf 0.5
+  --source 0 \
+  --weights yolov5s.pt \
+  --conf 0.5
 ```
 
 ### GUI Demo
@@ -96,6 +99,7 @@ python scripts/gui_inference.py
 ### Chuẩn bị dữ liệu
 
 Dataset phải có cấu trúc:
+
 ```
 datasets/traffic_signs_vietnam/
 ├── images/
@@ -112,12 +116,12 @@ datasets/traffic_signs_vietnam/
 
 ```bash
 python train_custom.py \
-    --data data/traffic_signs_vietnam.yaml \
-    --epochs 100 \
-    --img 640 \
-    --batch 16 \
-    --weights yolov5s.pt \
-    --device 0
+  --data data/traffic_signs_vietnam.yaml \
+  --epochs 100 \
+  --img 640 \
+  --batch 16 \
+  --weights yolov5s.pt \
+  --device 0
 ```
 
 ### Training options
@@ -135,9 +139,9 @@ python train_custom.py \
 
 ```bash
 python val.py \
-    --data data/traffic_signs_vietnam.yaml \
-    --weights results/models/best.pt \
-    --img 640
+  --data data/traffic_signs_vietnam.yaml \
+  --weights results/models/best.pt \
+  --img 640
 ```
 
 ## 📦 Export Model
@@ -146,20 +150,21 @@ python val.py \
 
 ```bash
 python export.py \
-    --weights results/models/best.pt \
-    --include onnx
+  --weights results/models/best.pt \
+  --include onnx
 ```
 
 ### Export sang TensorRT (GPU)
 
 ```bash
 python export.py \
-    --weights results/models/best.pt \
-    --include engine
-    --device 0
+  --weights results/models/best.pt \
+  --include engine
+--device 0
 ```
 
 Hỗ trợ các format:
+
 - TorchScript (.pt)
 - ONNX (.onnx)
 - TensorRT (.engine)
@@ -201,6 +206,7 @@ yolov5-traffic-detection/
 ## 📈 Kết quả
 
 Mô hình đạt được:
+
 - **Accuracy:** ~95% trên test set
 - **Speed:** Real-time inference (30+ FPS on GPU)
 - **Model size:** 14MB (YOLOv5s)
